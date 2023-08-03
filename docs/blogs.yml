@@ -1,0 +1,107 @@
+paths:
+  "/blogs":
+    get:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: getAll
+      operationId: getall
+      summary: getAll
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          properties:
+            body:
+              example: test blog body
+              type: string
+            title:
+              example: test blog title
+              type: string
+          type: object
+      responses:
+        '200':
+          description: ''
+      description: createOne
+      operationId: createone
+      summary: createOne
+  "/blogs/":
+    delete:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: deleteAll
+      operationId: deleteall
+      summary: deleteAll
+  "/blogs/all":
+    get:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: getAll as Admin
+      operationId: getallAsAdmin
+      summary: getAll as Admin
+  "/blogs/{id}":
+    parameters:
+    - in: path
+      name: id
+      required: true
+      type: string
+    delete:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: deleteOne
+      operationId: deleteone
+      summary: deleteOne
+    get:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: getOne
+      operationId: getone
+      summary: getOne
+    patch:
+      consumes:
+      - text/plain
+      parameters:
+      - in: body
+        name: body
+        schema:
+          format: binary
+          type: string
+      responses:
+        '200':
+          description: ''
+      description: publishOne
+      operationId: publishone
+      summary: publishOne
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          properties:
+            publish:
+              example: true
+              type: boolean
+            title:
+              example: test blog title update
+              type: string
+          type: object
+      responses:
+        '200':
+          description: ''
+      description: updateOne
+      operationId: updateone
+      summary: updateOne
