@@ -1,0 +1,91 @@
+paths:
+  "/contact":
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          properties:
+            email:
+              example: kagabaeteinne04@gmail.com
+              type: string
+            first_name:
+              example: Etienne
+              type: string
+            last_name:
+              example: Kagaba
+              type: string
+            message:
+              example: this is a test message
+              type: string
+          type: object
+      responses:
+        '200':
+          description: ''
+      description: sendOne
+      operationId: sendone
+      summary: sendOne
+  "/queries":
+    delete:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: deleteAll
+      operationId: deleteall
+      summary: deleteAll
+    get:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: getAll
+      operationId: getall
+      summary: getAll
+  "/queries/mark-all-as-read":
+    patch:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: markAllAsRead
+      operationId: markallasread
+      summary: markAllAsRead
+  "/queries/mark-as-read/{id}":
+    parameters:
+    - in: path
+      name: id
+      required: true
+      type: string
+    patch:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: markAsRead
+      operationId: markasread
+      summary: markAsRead
+  "/queries/{id}":
+    parameters:
+    - in: path
+      name: id
+      required: true
+      type: string
+    delete:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: deleteOne
+      operationId: deleteone
+      summary: deleteOne
+    get:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: getOne
+      operationId: getone
+      summary: getOne
