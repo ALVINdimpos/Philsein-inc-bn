@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./docs/swagger');
+const cors = require('cors');
+
 
 const indexRouter = require('./routes/index');
 const queryRouter = require('./routes/queryRouter');
@@ -19,6 +21,7 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -33,9 +36,10 @@ const options = {
   };
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, false, options));
 
+
+app.use('/blogs', isLoggedin, blogRouter);
 app.use('/', indexRouter);
 app.use('/queries', isLoggedin, queryRouter);
-app.use('/blogs', isLoggedin, blogRouter);
 app.use('/staff', isLoggedin, staffRouter);
 app.use('/apps', isLoggedin, quappRouter);
 app.use('/referrals', isLoggedin, referralRouter);

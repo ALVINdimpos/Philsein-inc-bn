@@ -40,7 +40,7 @@ const quappSchema = new Schema({
         type: String,
         required: true
     }],
-    schedule: String,
+    schedule: [String],
     resume: [{
         type: String,
         default: []
