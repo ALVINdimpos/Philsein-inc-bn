@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors=require("cors")
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const swaggerUi = require('swagger-ui-express');
@@ -17,8 +18,10 @@ const { isLoggedin } = require('./middleware/auth');
 
 const app = express();
 
+
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cors())
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
