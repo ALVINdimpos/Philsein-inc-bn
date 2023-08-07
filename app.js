@@ -6,6 +6,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./docs/swagger');
 const cors = require('cors');
 
+
 const indexRouter = require('./routes/index');
 const queryRouter = require('./routes/queryRouter');
 const blogRouter = require('./routes/blogRouter');
@@ -34,6 +35,7 @@ const options = {
     },
   };
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, false, options));
+
 
 app.use('/blogs', isLoggedin, blogRouter);
 app.use('/', indexRouter);
