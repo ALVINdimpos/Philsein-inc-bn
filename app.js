@@ -5,35 +5,6 @@ const logger = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./docs/swagger');
 const cors = require('cors');
-const multer = require('multer');
-
-
-const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, './uploads/resume');
-  },
-  filename: (req, file, callback) => {
-    callback(null, file.originalname);
-  }
-});
-
-const fileFilter = (req, file, cb) => {
-  // reject a file
-  if (file.mimetype === 'application/pdf') {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
-
-
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 5
-  },
-  fileFilter: fileFilter
-});
 
 
 const indexRouter = require('./routes/index');
@@ -73,10 +44,6 @@ app.use('/staff', isLoggedin, staffRouter);
 app.use('/apps', isLoggedin, quappRouter);
 app.use('/referrals', isLoggedin, referralRouter);
 app.use('/users', userRouter);
-app.post('/files', upload.single('cv'), (req, res) => {
-  console.log(req)
-  res.send({success: true})
-})
 
 
 module.exports = app;
