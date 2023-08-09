@@ -3,7 +3,7 @@ const Quapp = require('../models/quapp');
 
 const sendApp = (req, res) => {
     const host = req.hostname;
-    const filePath = req.protocol + "://" + host + '/' + req?.file?.path + req?.suffix;
+    const filePath = req.protocol + "://" + host + '/' + req?.file?.path;
     req.body = {...req.body, resume: [filePath]};
     console.log(req)
     const uQuapp = new Quapp({...req.body, readStatus: false});
