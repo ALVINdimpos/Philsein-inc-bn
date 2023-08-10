@@ -2,6 +2,7 @@ const Quapp = require('../models/quapp');
 
 
 const sendApp = (req, res) => {
+    req.body = {...req.body};
     const uQuapp = new Quapp({...req.body, readStatus: false});
     uQuapp.save()
         .then(_ => {
