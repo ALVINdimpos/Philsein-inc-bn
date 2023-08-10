@@ -25,8 +25,7 @@ const quappSchema = new Schema({
         required: true
     },
     address: [{
-        type: String,
-        required: true
+        type: String
     }],
     city: String,
     province: String,
